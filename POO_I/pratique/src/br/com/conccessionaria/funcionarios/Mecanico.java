@@ -1,7 +1,19 @@
 package br.com.conccessionaria.funcionarios;
 
 public class Mecanico {
-	String nome;
-	int anosExperiencia;
-	int carrosSimultaneos;
+
+	private String nome;
+	private int anosExperiencia;
+	private int carrosSimultaneos;
+
+	public String getNome() {
+		return this.nome;
+	}	
+	public int getAnosExperiencia() {
+		return this.anosExperiencia;
+	}	
+	public int getCarrosSimultaneos() {
+		return this.carrosSimultaneos;
+	}	
+
 }
