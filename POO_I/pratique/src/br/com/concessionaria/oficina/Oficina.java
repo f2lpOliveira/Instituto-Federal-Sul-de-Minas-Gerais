@@ -1,6 +1,7 @@
 package br.com.concessionaria.oficina;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import br.com.concessionaria.estrutura.Peca;
 import br.com.concessionaria.funcionarios.Mecanico;
@@ -53,7 +54,12 @@ public class Oficina {
 	}
 
 	public void adicionarMecanico(Mecanico mecanico){
-		this.listaMecanicos.add(mecanico);
+		// Verifique se a lista de mecânicos é nula
+    if (this.listaMecanicos == null) {
+			this.listaMecanicos = new ArrayList<>(); // Inicialize a lista se for nula
+	}
+
+	this.listaMecanicos.add(mecanico); // Adicione o mecânico à lista
 	}
 	public void removerMecanico(Mecanico mecanico){
 		this.listaMecanicos.remove(mecanico);
@@ -65,19 +71,101 @@ public class Oficina {
 		this.listaPecas.remove(peca);
 	}
 	public void adicionarVeiculo(Veiculo veiculo){
-		this.listaVeiculos.add(veiculo);
+		if (this.listaVeiculos == null) { // Verifique se a lista é nula
+			this.listaVeiculos = new ArrayList<>(); // Inicialize a lista se for nula
+	}
+	this.listaVeiculos.add(veiculo); // Adicione o veículo à lista
+
+	// Verifique se a lista de peças é nula
+	if (this.listaPecas == null) {
+			this.listaPecas = new ArrayList<>(); // Inicialize a lista se for nula
+	}
+
+	// Adicionar um número aleatório de peças (de 1 a 3) à lista de peças da oficina
+	int numPecas = (int) (Math.random() * 3) + 1;
+	for (int i = 0; i < numPecas; i++) {
+			Peca peca = new Peca(); // Crie uma instância de Peca aqui
+			listaPecas.add(peca);
+	}
+
+	// Atualizar o valor do atributo pecasNecessarias
+	pecasNecessarias += numPecas;
 	}
 	public void removerVeiculo(Veiculo veiculo){
-		this.listaVeiculos.remove(veiculo);
+		 // Remover o veículo da lista de veículos da oficina
+		 listaVeiculos.remove(veiculo);
+    
+		 // Remover um número aleatório de peças (de 1 a 3) da lista de peças da oficina
+		 int numPecas = (int) (Math.random() * 3) + 1;
+		 for (int i = 0; i < numPecas; i++) {
+				 if (!listaPecas.isEmpty()) {
+						 listaPecas.remove(0);
+				 }
+		 }
+		 
+		 // Atualizar o valor do atributo pecasNecessarias
+		 pecasNecessarias -= numPecas;
 	}
 	public int verificarPecasRevisao(){
-		return 0;
+		Random random = new Random();
+        return random.nextInt(3) + 1;
 	}
 	public boolean realizarRevisaoVeiculos(){
-		return true;
+		// Verificar se há veículos na lista de veículos da oficina
+    if (!listaVeiculos.isEmpty()) {
+			// Verificar se há peças suficientes para realizar as revisões de todos os veículos
+			if (pecasNecessarias <= listaPecas.size()) {
+					// Verificar se há mecânicos suficientes para atender os veículos na oficina
+					int numMecanicosNecessarios = (int) Math.ceil((double) listaVeiculos.size() / getCarrosSimultaneos());
+					if (numMecanicosNecessarios <= listaMecanicos.size()) {
+							// Exibir as placas dos carros
+							System.out.println("Placas dos carros a serem revisados:");
+							for (Veiculo veiculo : listaVeiculos) {
+									System.out.println(veiculo.getPlaca());
+							}
+
+							// Exibir os nomes de todos os mecânicos na oficina
+							System.out.println("Nomes dos mecânicos na oficina:");
+							for (Mecanico mecanico : listaMecanicos) {
+									System.out.println(mecanico.getNome());
+							}
+
+							// Exibir os dados de todas as peças na oficina
+							System.out.println("Dados de todas as peças na oficina:");
+							for (Peca peca : listaPecas) {
+									System.out.println("Nome: " + peca.getNome() + ", Valor: " + peca.getValor());
+							}
+
+							// Retornar true, indicando que foi possível realizar as revisões simultaneamente
+							return true;
+					} else {
+							System.out.println("Não há mecânicos suficientes para atender os veículos na oficina.");
+					}
+			} else {
+					System.out.println("Não há número suficiente de peças para realizar as revisões de todos os veículos.");
+			}
+	} else {
+			System.out.println("Não há veículos para revisão na oficina.");
 	}
+
+	// Retornar false, indicando que não foi possível realizar as revisões simultaneamente
+	return false;
+	}
+	private int getCarrosSimultaneos() {
+		int carrosSimultaneos = 0;
+		for (Mecanico mecanico : listaMecanicos) {
+				if (mecanico.getCarrosSimultaneos() > carrosSimultaneos) {
+						carrosSimultaneos = mecanico.getCarrosSimultaneos();
+				}
+		}
+		return carrosSimultaneos;
+}
 	public float valorTotalPecas(){
-		return 0;
+		float valorTotal = 0;
+		for (Peca peca : listaPecas) {
+				valorTotal += peca.getValor();
+		}
+		return valorTotal * pecasNecessarias;
 	}
 
 }

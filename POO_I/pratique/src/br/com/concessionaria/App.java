@@ -1,9 +1,9 @@
 package br.com.concessionaria;
 
-import br.com.concessionaria.estrutura.Peca;
-import br.com.concessionaria.funcionarios.Mecanico;
-import br.com.concessionaria.oficina.Oficina;
-import br.com.concessionaria.veiculos.Veiculo;
+import br.com.concessionaria.estrutura.*;
+import br.com.concessionaria.funcionarios.*;
+import br.com.concessionaria.oficina.*;
+import br.com.concessionaria.veiculos.*;
 
 public class App {
     public static void main(String[] args) throws Exception {

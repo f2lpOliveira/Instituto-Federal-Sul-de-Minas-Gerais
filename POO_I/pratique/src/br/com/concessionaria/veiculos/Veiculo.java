@@ -59,7 +59,7 @@ public class Veiculo {
 	}
 
 	public void informarQuilometragem (int quilometragem){
-		
+		this.kmRodados = quilometragem;
 	}
 
 }

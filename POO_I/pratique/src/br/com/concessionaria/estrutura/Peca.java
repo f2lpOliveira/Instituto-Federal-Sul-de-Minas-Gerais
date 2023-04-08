@@ -28,6 +28,9 @@ public class Peca {
 	}
 
 	// Construtor da Classe
+	public Peca() {
+	}
+
 	public Peca (String nome, float valor, String dataCompra){
 		this.nome = nome;
 		this.valor = valor;
