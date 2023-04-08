@@ -57,5 +57,9 @@ public class Veiculo {
 		this.cor = cor;
 		this.kmRodados = kmRodados;
 	}
-	
+
+	public void informarQuilometragem (int quilometragem){
+		
+	}
+
 }
