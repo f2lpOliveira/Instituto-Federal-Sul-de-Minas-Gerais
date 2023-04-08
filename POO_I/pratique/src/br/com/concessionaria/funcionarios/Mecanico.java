@@ -1,4 +1,4 @@
-package br.com.conccessionaria.funcionarios;
+package br.com.concessionaria.funcionarios;
 
 public class Mecanico {
 

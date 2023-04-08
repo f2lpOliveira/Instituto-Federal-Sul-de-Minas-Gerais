@@ -1,10 +1,10 @@
-package br.com.conccessionaria.oficina;
+package br.com.concessionaria.oficina;
 
 import java.util.ArrayList;
 
-import br.com.conccessionaria.estrutura.Peca;
-import br.com.conccessionaria.funcionarios.Mecanico;
-import br.com.conccessionaria.veiculos.Veiculo;
+import br.com.concessionaria.estrutura.Peca;
+import br.com.concessionaria.funcionarios.Mecanico;
+import br.com.concessionaria.veiculos.Veiculo;
 
 public class Oficina {
 
@@ -16,8 +16,7 @@ public class Oficina {
 	private int pecasNecessarias;
 
 	// Construtor da Classe
-	public Oficina (String nomeOficina, int pecasNecessarias){
+	public Oficina (String nomeOficina){
 		this.nomeOficina = nomeOficina;
-		this.pecasNecessarias = pecasNecessarias;
 	}
 }

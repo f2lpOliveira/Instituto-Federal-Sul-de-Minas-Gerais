@@ -1,4 +1,4 @@
-package br.com.conccessionaria.estrutura;
+package br.com.concessionaria.estrutura;
 
 public class Peca {
 

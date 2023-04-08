@@ -1,4 +1,4 @@
-package br.com.conccessionaria.veiculos;
+package br.com.concessionaria.veiculos;
 
 public class Veiculo {
 
