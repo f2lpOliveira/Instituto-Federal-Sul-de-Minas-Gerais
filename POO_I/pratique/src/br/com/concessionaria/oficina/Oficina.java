@@ -15,6 +15,11 @@ public class Oficina {
 	private ArrayList<Veiculo> listaVeiculos;
 	private int pecasNecessarias;
 
+	// Construtor da Classe
+	public Oficina (String nomeOficina){
+		this.nomeOficina = nomeOficina;
+	}
+
 	// Getters e Setters (Definição e Recuperação de Valores dos Atributos da Classe)
 	public String getNomeOficina() {
 		return this.nomeOficina;
@@ -45,11 +50,6 @@ public class Oficina {
 	}
 	public void setPecasNecessarias(int pecasNecessarias) {
 		this.pecasNecessarias = pecasNecessarias;
-	}
-
-	// Construtor da Classe
-	public Oficina (String nomeOficina){
-		this.nomeOficina = nomeOficina;
 	}
 
 	public void adicionarMecanico(Mecanico mecanico){
